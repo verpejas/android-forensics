@@ -1,0 +1,122 @@
+% Kompiuterijos katedros ir kibernetinio saugumo laboratorijos šablonas
+% Template of Department of Computer Science II or cybersecurity laboratory
+% Versija 1.3 2021 m. birželis [ March, 2015]
+
+\documentclass[a4paper,12pt,fleqn]{article}
+\input{allPacks}
+
+\newtoggle{inLithuanian}
+ %If the report is in Lithuanian, it is set to true; otherwise, change to false
+\settoggle{inLithuanian}{false}
+
+%create file preface.tex for the preface text
+%if preface is needed set to true
+\newtoggle{needPreface}
+\settoggle{needPreface}{false}
+
+\newtoggle{signaturesOnTitlePage}
+\settoggle{signaturesOnTitlePage}{true}
+
+\input{macros}
+
+\begin{document}
+ % #1 -report type, #2 - title, #3-7 students, #8 - supervisor
+ \depttitlepage{<<Super program name>> <<x>> year <<Report type>>}{Title in the primary language\\{\small Title in the secondary language}}{Name Surname} 
+ {}{}{}{}% students 2-5
+ {dr. Supervisor Name}
+
+\tableofcontents
+
+
+%keywords and notations if needed
+\sectionWithoutNumber{Sutartinis terminų žodynas}{keywords}{Pateikiamas terminų sąrašas (jei reikia)}
+
+ %both abstracts
+\bothabstracts{\input{abstract}}%tex-file of abstract in original language
+{Darbo pavadinimas kita kalba} %if work is in LT this title should be in English
+{\input{abstractEN}}%tex-file of abstract in other language
+
+
+ %Introduction section: label is sec:intro
+\sectionWithoutNumber{\keyWordIntroduction}{intro}
+\input{introduction.tex}
+
+
+
+ %the main part
+\newpage
+\section{Analysis}
+\label{sec:motivation}
+\subsection{some subection}
+\label{sec:example}
+Pateikiamas \ref{sec:example} poskyrio tekstas. Vienas iš šaltinių~\cite{KTZ}. Visas turinys priklauso \ref{sec:motivation} skyriui.
+
+Example to cite~\cite{10.1145/3470451}
+
+\subsubsection{The first sub-subsection}
+\label{sec:data}
+Pateikiamas trečio lygio poskyrio tekstas.
+
+\begin{equation}
+x = \sum_{i=1}^N m_i
+\end{equation}
+
+\begin{table}[!ht]\centering
+\caption{Lentelė ... }
+\label{tabl:table}
+\begin{tabular}{l|r|}
+test&test\\ \hline
+test&test\\
+\end{tabular}
+\end{table}
+
+Sprendimas pristatomas \ref{alg:1} algoritme, o įgyvendinimas -- \ref{abc} išeities kode.
+
+\begin{algorithm}\caption{Algoritmas uždavinio sprendimui}
+  \label{alg:1}
+  \begin{algorithmic}
+    \REQUIRE 
+    \ENSURE 
+\STATE a \AND b
+\end{algorithmic}
+
+
+\end{algorithm}
+
+
+
+\begin{lstlisting}[caption={Pagrindinio metodo žingsniai},label={abc}]
+public static void main(String args[]){
+}
+\end{lstlisting}
+
+ %Conclusions section
+\sectionWithoutNumber{\keyWordConclusions}{conclu}
+\input{conclusions.tex}
+
+%ateities darbų gairės, planas/next steps of the work
+\sectionWithoutNumber{Ateities tyrimų planas}{future}{Pristatomi ateities darbai ir/ar jų planas, gairės tolimesniems darbams....}
+
+
+ %file literatureSources.bib
+\referenceSources{literatureSources}
+
+
+
+%% this part is optional
+\newpage
+\begin{appendices}
+Dokumentą sudaro du priedai: \ref{app:a} priede  ....
+\newpage
+\section{Pirmojo priedo pavadinimas}
+\label{app:a}
+Pirmojo priedo tekstas ...
+
+\newpage
+\section{Antrojo priedo pavadinimas}
+Antrojo priedo tekstas ...
+
+\end{appendices}
+
+
+\end{document}
